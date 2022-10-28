@@ -21,7 +21,7 @@
 
 set -eo pipefail
 
-CMDSHELL="$(command -v cmd.exe || echo '/mnt/c/Windows/system32/cmd.exe')"
+CMDSHELL="$(command -v cmd.exe || echo '/c/Windows/system32/cmd.exe')"
 PROGRAMFILES="$(wslpath "$($CMDSHELL /V:OFF /C 'echo %PROGRAMFILES%' | tr -d '\n\r')")"
 LOCALAPPDATA="$(wslpath "$($CMDSHELL /V:OFF /C 'echo %LOCALAPPDATA%' | tr -d '\n\r')")"
 CONF_PATH="$LOCALAPPDATA/DockerInWSL/wsl-vpnkit/wsl-vpnkit.conf"
