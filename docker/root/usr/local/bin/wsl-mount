@@ -6,7 +6,8 @@ log() {
   echo "[$(date -Ins)] $*"
 }
 
-mkdir -p /mnt/wsl/clf_dockerinwsl
+mkdir -p /wsl/clf_dockerinwsl
+mkdir -p /wsl/shared-docker
 
 while true; do
 
@@ -19,10 +20,10 @@ then
 
 else
 
-  log "mounting data:/var/lib/docker/ => /mnt/wsl/dockerinwsl_data/ ..."
-  wsl.exe -d dockerinwsl_data -u root mount --bind /var/lib/docker/ /mnt/wsl/clf_dockerinwsl || exit 1
-  log "mounting /mnt/wsl/dockerinwsl_data/ => daemon:/var/lib/docker/ ..."
-  wsl.exe -d clf_dockerinwsl -u root mount --bind /mnt/wsl/clf_dockerinwsl /var/lib/docker/ || exit 1
+  log "mounting data:/var/lib/docker/ => /wsl/dockerinwsl_data/ ..."
+  wsl.exe -d dockerinwsl_data -u root mount --bind /var/lib/docker/ /wsl/clf_dockerinwsl || exit 1
+  log "mounting /wsl/dockerinwsl_data/ => daemon:/var/lib/docker/ ..."
+  wsl.exe -d clf_dockerinwsl -u root mount --bind /wsl/clf_dockerinwsl /var/lib/docker/ || exit 1
 
   log "... done mounting"
 
